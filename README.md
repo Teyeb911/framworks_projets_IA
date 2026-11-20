@@ -14,6 +14,8 @@ Travaux pratiques du cours *Framework d'Implémentation des Projets IA*
 Application web Gradio qui prédit si un texte (français ou anglais) est **positif**, **négatif** ou **neutre**,
 avec le modèle pré-entraîné `cardiffnlp/twitter-xlm-roberta-base-sentiment` (Hugging Face).
 
+**👉 Tester l'application en ligne : https://huggingface.co/spaces/teyebsidi/analyse-sentiments**
+
 - Code : [app.py](tp1/TP_Gradio_Sentiments/app.py), [tester.py](tp1/TP_Gradio_Sentiments/tester.py)
 - Captures d'écran : [captures/](tp1/TP_Gradio_Sentiments/captures)
 

@@ -11,6 +11,15 @@
 import gradio as gr
 from transformers import pipeline
 
+# Deploiement sur Hugging Face Spaces (materiel gratuit ZeroGPU) :
+# le paquet "spaces" n'existe que sur Hugging Face. En local, il est absent
+# et l'application tourne normalement sur le processeur (CPU).
+try:
+    import spaces
+    SUR_HUGGING_FACE = True
+except ImportError:
+    SUR_HUGGING_FACE = False
+
 # 1. Modele pre-entraine (Hugging Face Hub)
 #    Modele multilingue (dont francais et anglais) a trois classes :
 #    negative, neutral, positive
@@ -18,6 +27,7 @@ classifieur = pipeline(
     "sentiment-analysis",
     model="cardiffnlp/twitter-xlm-roberta-base-sentiment",
     top_k=None,  # renvoyer le score des trois classes
+    device="cuda" if SUR_HUGGING_FACE else -1,  # GPU sur Spaces, CPU en local
 )
 
 # Traduction des etiquettes du modele en francais
@@ -35,6 +45,11 @@ def analyser_sentiment(texte):
         traduction[element["label"].lower()]: float(element["score"])
         for element in resultats
     }
+
+
+# Sur ZeroGPU, la fonction qui utilise le GPU doit etre marquee @spaces.GPU
+if SUR_HUGGING_FACE:
+    analyser_sentiment = spaces.GPU(analyser_sentiment)
 
 
 # 3. Interface Gradio : gr.Textbox en entree, gr.Label en sortie

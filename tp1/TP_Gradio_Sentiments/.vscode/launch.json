@@ -1,0 +1,7 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    { "name": "Lancer l'application Gradio", "type": "debugpy", "request": "launch", "program": "${workspaceFolder}/app.py", "console": "integratedTerminal" },
+    { "name": "Tester les phrases", "type": "debugpy", "request": "launch", "program": "${workspaceFolder}/tester.py", "console": "integratedTerminal" }
+  ]
+}

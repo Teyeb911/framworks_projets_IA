@@ -1,0 +1,6 @@
+Placez ici vos captures d'ecran :
+1_interface.png   - l'interface au demarrage
+2_positif.png     - une prediction positive
+3_negatif.png     - une prediction negative
+4_neutre.png      - une prediction neutre
+5_terminal.png    - le terminal au lancement (Running on local URL...)
